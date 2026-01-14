@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Resin Forge Gallery</title>
+<style>
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  line-height: 1.6;
+  background-color: #121212;
+  color: #f0f0f0;
+}
+h1 {
+  text-align: center;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.gallery-item {
+  border: 1px solid #333;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: #1e1e1e;
+  text-align: center;
+  position: relative;
+}
+.gallery-item img {
+  width: 100%;
+  height: 250px;       /* uniform height for all images */
+  object-fit: contain;  /* preserves aspect ratio, adds letterboxing if needed */
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: #82aaff;
+  background-color: rgba(30, 30, 30, 0.8);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 5px;
+}
+.arrow-left {
+  left: 5px;
+}
+.arrow-right {
+  right: 5px;
+}
+nav {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+nav a {
+  margin: 0 1rem;
+  color: #82aaff;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="stl-guide.html">STL Guide</a>
+</nav>
+
+<h1>Your Resin Forge: Sample Prints</h1>
+
+<p>Here are some of my past prints so you can see the level of detail I provide.</p>
+
+<div class="gallery">
+
+  <!-- DnD Mini 1 -->
+  <div class="gallery-item">
+    <img src="images/mini1.jpg" alt="DnD Mini 1">
+    <p>DnD Mini 1</p>
+  </div>
+
+  <!-- DnD Mini 2 -->
+  <div class="gallery-item">
+    <img src="images/mini2.jpg" alt="DnD Mini 2">
+    <p>DnD Mini 2</p>
+  </div>
+
+  <!-- Articulated Slug -->
+  <div class="gallery-item">
+    <img src="images/slug.jpg" alt="Articulated Slug">
+    <p>Articulated Slug</p>
+  </div>
+
+  <!-- Chess Set Carousel -->
+  <div class="gallery-item">
+    <div style="position: relative;">
+      <span class="arrow arrow-left" onclick="prevChess()">&#8592;</span>
+      <img id="chessImg" src="images/chess1.jpg" alt="Chess Set">
+      <span class="arrow arrow-right" onclick="nextChess()">&#8594;</span>
+    </div>
+    <p>Chess Set</p>
+  </div>
+
+</div>
+
+<script>
+let chessIndex = 0;
+const chessImages = ["images/chess1.jpg", "images/chess2.jpg"];
+const chessImgElement = document.getElementById("chessImg");
+
+function nextChess() {
+  chessIndex = (chessIndex + 1) % chessImages.length;
+  chessImgElement.src = chessImages[chessIndex];
+}
+
+function prevChess() {
+  chessIndex = (chessIndex - 1 + chessImages.length) % chessImages.length;
+  chessImgElement.src = chessImages[chessIndex];
+}
+</script>
+
+</body>
+</html>

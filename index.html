@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Resin Forge</title>
+<style>
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+  background-color: #121212;
+  color: #f0f0f0;
+}
+form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+input, textarea, select, button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #333;
+}
+button {
+  cursor: pointer;
+  background-color: #333;
+  color: #f0f0f0;
+  border: none;
+}
+a {
+  color: #82aaff;
+  text-decoration: underline;
+}
+nav {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+nav a {
+  margin: 0 1rem;
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation-->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="stl-guide.html">STL Guide</a>
+</nav>
+
+<h1>Custom Resin Prints & DnD Minis</h1>
+
+<p>
+I print nearly anything you can imagine.<br>
+Have a model you created or downloaded and want it in real life? I can print it.<br>
+Want a custom model of your own original character and shipped to you? I’ve got you covered.
+</p>
+
+<p><strong>Pricing</strong><br>
+• Print your STL or a downloaded model: <strong>$5–10+</strong> plus shipping & tax<br>
+• Custom model made from scratch of your own character: <strong>$50+</strong> plus shipping & tax<br>
+<strong>ALL PRICES NEGOTIABLE, BIGGER PRINTS WILL COST MORE.</strong>
+</p>
+
+<h2>Request a Quote</h2>
+<form action="https://formspree.io/f/meeeqbad" method="POST">
+  <input type="text" name="name" placeholder="Your name" required>
+  <input type="email" name="email" placeholder="Your email" required>
+
+  <select name="service" id="service" required>
+    <option value="">What do you need?</option>
+    <option value="print-existing">Print my STL/downloaded file</option>
+    <option value="custom-model">Design + print my character</option>
+  </select>
+
+  <div id="fileBlock">
+    <label for="filelink">Paste link to your STL (optional, you can email it later if you don’t want to provide it now)</label>
+    <input type="url" name="filelink" id="filelink" placeholder="Paste your STL link here">
+    <small>Need help uploading your STL? <a href="stl-guide.html" target="_blank">Click here</a></small>
+  </div>
+
+  <textarea name="order" rows="6" placeholder="Describe size, scale, character details, etc." required></textarea>
+  <button type="submit">Send Request</button>
+</form>
+
+<p style="margin-top:1rem;font-size:0.9rem;">
+I reply within 48 hours with pricing and shipping details.
+</p>
+
+<script>
+// STL link field visibility
+const service = document.getElementById('service');
+const fileBlock = document.getElementById('fileBlock');
+
+// Hide initially
+fileBlock.style.display = 'none';
+
+// Show only if "Print my STL/downloaded file" is selected
+service.addEventListener('change', () => {
+  if (service.value === 'print-existing') {
+    fileBlock.style.display = 'block';
+  } else {
+    fileBlock.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>
